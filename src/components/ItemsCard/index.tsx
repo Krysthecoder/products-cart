@@ -1,4 +1,3 @@
-import React from 'react';
 import baklavaDesktop from '../../assets/images/baklavaDesktop.jpg';
 import { IconAddToCart } from '../../utils';
 

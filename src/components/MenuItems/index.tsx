@@ -1,9 +1,8 @@
-import React from 'react';
 import { ItemsCard } from '../ItemsCard';
 
 function MenuItems() {
   return (
-    <div className="w-9/12 h-screen">
+    <div className="w-10/12 h-screen">
       <div>
         <h1 className="text-3xl">Desserts</h1>
       </div>
