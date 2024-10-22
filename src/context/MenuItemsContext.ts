@@ -1,5 +1,4 @@
 import { createContext } from "react";
+import { IProductsDetails } from "../Types";
 
-import { Items } from "../App";
-
-export const MenuItemsContext = createContext<Items | undefined>(undefined);
+export const MenuItemsContext = createContext<IProductsDetails | null>(null);

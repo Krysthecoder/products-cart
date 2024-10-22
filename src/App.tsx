@@ -4,19 +4,22 @@ import CartSummary from './components/CartSummary';
 import MenuItems from './components/MenuItems';
 import { MenuItemsContext } from './context/MenuItemsContext';
 import './output.css';
-
-export interface Items {
-  title: string;
-  price: number;
-}
-
-const items = {
-  title: 'cheesecake',
-  price: 30
-};
+import { IProductsDetails } from './Types';
 
 function App() {
-  const [itemsData, setItemsData] = useState({});
+  const [itemsData, setItemsData] = useState<IProductsDetails[]>([
+    {
+      category: 'waffle',
+      image: {
+        desktop: 'string',
+        mobile: 'string',
+        tablet: 'string',
+        thumbnail: 'string'
+      },
+      name: 'string',
+      price: 8
+    }
+  ]);
 
   async function dataFetcher() {
     try {
@@ -25,7 +28,7 @@ function App() {
         const json = await response.json();
         setItemsData(json);
       } else {
-        console.error('Promise resolved but HTTP status failed');
+        console.error('Error: ', response);
       }
     } catch (error) {
       console.error(error);
@@ -36,10 +39,9 @@ function App() {
     dataFetcher();
   }, []);
 
-  console.log('itemsData', itemsData);
   return (
     <div className="flex gap-10 p-28 bg-amber-50">
-      <MenuItemsContext.Provider value={items}>
+      <MenuItemsContext.Provider value={itemsData}>
         <MenuItems />
         <CartSummary />
       </MenuItemsContext.Provider>

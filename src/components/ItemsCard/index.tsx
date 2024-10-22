@@ -1,7 +1,8 @@
 import baklavaDesktop from '../../assets/images/baklavaDesktop.jpg';
+import { IProductsDetails } from '../../Types';
 import { IconAddToCart } from '../../utils';
 
-export const ItemsCard = () => {
+export const ItemsCard = ({ name, price, category }: IProductsDetails) => {
   return (
     <div className="w-full h-auto mx-auto">
       <img src={baklavaDesktop} className="rounded-xl" alt="baklavaDesktop" />
@@ -12,9 +13,9 @@ export const ItemsCard = () => {
         Add to Cart
       </button>
       <div>
-        <h1 className="text-zinc-400 text-sm">Title 1</h1>
-        <h1 className="text-lg font-semibold">Title 2</h1>
-        <h1 className="text-lg text-red-600">Price</h1>
+        <h1 className="text-zinc-400 text-sm">{category}</h1>
+        <h1 className="text-lg font-semibold">{name}</h1>
+        <h1 className="text-lg text-red-600">${price.toFixed(2)}</h1>
       </div>
     </div>
   );
