@@ -1,6 +1,29 @@
+import { useEffect, useState } from 'react';
 import { ItemsCard } from '../ItemsCard';
 
 function MenuItems() {
+  const [itemsData, setItemsData] = useState({});
+
+  async function dataFetcher() {
+    try {
+      const response = await fetch('../../../public/data.json');
+      if (response.ok) {
+        const json = await response.json();
+        setItemsData(json);
+      } else {
+        console.error('Promise resolved but HTTP status failed');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    dataFetcher();
+  }, []);
+
+  console.log('itemsData', itemsData);
+
   return (
     <div className="w-10/12 h-screen">
       <div>
