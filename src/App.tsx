@@ -40,7 +40,7 @@ function App() {
   }, []);
 
   return (
-    <div className="flex gap-10 p-28 bg-amber-50">
+    <div className="flex gap-10 p-28 bg-orange-50">
       <MenuItemsContext.Provider value={itemsData}>
         <MenuItems />
         <CartSummary />
