@@ -12,7 +12,7 @@ export const ItemsCard = ({ name, price, category }: IProductsDetails) => {
         </span>
         Add to Cart
       </button>
-      <div>
+      <div className="mt-2">
         <h1 className="text-zinc-400 text-sm">{category}</h1>
         <h1 className="text-lg font-semibold">{name}</h1>
         <h1 className="text-lg text-red-600">${price.toFixed(2)}</h1>

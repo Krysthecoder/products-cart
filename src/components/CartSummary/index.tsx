@@ -2,7 +2,7 @@ import { IconCarbonNeutral, IconRemoveItem } from '../../utils';
 
 function CartSummary() {
   return (
-    <div className="w-4/12">
+    <div className="w-4/12 mt-4">
       <div className="bg-slate-50 h-auto">
         <div className="p-4">
           <h1 className="text-xl text-orange-700 font-semibold mb-8">
