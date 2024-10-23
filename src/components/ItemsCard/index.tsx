@@ -8,32 +8,40 @@ import {
 } from '../../utils';
 
 export const ItemsCard = ({ name, price, category }: IProductsDetails) => {
-  const [productAmount, setProductAmount] = useState<number>(0);
+  const [addCartBtnStatus, setAddCartBtnStatus] = useState<boolean>(true);
+
+  const [productAmount, setProductAmount] = useState<number>(1);
 
   return (
     <div className="w-full h-auto mx-auto">
       <img src={baklavaDesktop} className="rounded-xl" alt="baklavaDesktop" />
-
-      <div className="group">
-        <div className="group-hover:hidden flex justify-evenly items-center w-6/12 px-3 py-2 rounded-3xl bg-slate-100 relative -mt-5 mx-auto border border-red-600">
+      {addCartBtnStatus ? (
+        <button
+          className="flex justify-evenly items-center w-6/12 px-3 py-2 rounded-3xl bg-slate-100 relative -mt-5 mx-auto border border-red-600"
+          onClick={() => {
+            setAddCartBtnStatus(false);
+          }}
+        >
           <span>
             <IconAddToCart />
           </span>
           Add to Cart
-        </div>
-
-        <div className="hidden group-hover:flex  justify-between items-center w-6/12 px-3 py-2 rounded-3xl bg-red-600 relative -mt-5 mx-auto border border-red-600">
+        </button>
+      ) : (
+        <div className="flex justify-between items-center w-6/12 px-3 py-2 rounded-3xl bg-red-600 relative -mt-5 mx-auto border border-red-600">
           <button
             className="border border-white rounded-full px-1 py-2"
             onClick={() => {
-              if (productAmount > 0) {
+              if (productAmount > 1) {
                 setProductAmount(productAmount - 1);
               }
             }}
           >
             <IconDecrementQuantity />
           </button>
+
           {productAmount}
+
           <button
             className="border border-white rounded-full px-1 py-1"
             onClick={() => {
@@ -43,7 +51,7 @@ export const ItemsCard = ({ name, price, category }: IProductsDetails) => {
             <IconIncrementQuantity />
           </button>
         </div>
-      </div>
+      )}
 
       <div className="mt-2">
         <h1 className="text-zinc-400 text-sm">{category}</h1>

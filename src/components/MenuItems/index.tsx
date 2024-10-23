@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { ItemsCard } from '../ItemsCard';
-import { MenuItemsContext } from '../../context/MenuItemsContext';
+import { productContext } from '../../context/productContext';
 import { IProductsDetails } from '../../Types';
 
 const MenuItems = () => {
-  const itemsData: IProductsDetails[] = useContext(MenuItemsContext);
+  const productsData: IProductsDetails[] | [] = useContext(productContext);
 
   return (
     <div className="w-10/12 h-auto">
@@ -13,7 +13,7 @@ const MenuItems = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-        {itemsData.map((product) => {
+        {productsData.map((product) => {
           return (
             <ItemsCard
               image={product.image}
