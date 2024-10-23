@@ -19,7 +19,7 @@ type Props = {
   children: string | JSX.Element | JSX.Element[];
 };
 
-function ProductsState({ children }: Props) {
+function ProductsMenuState({ children }: Props) {
   const [productsData, setProductsData] =
     useState<IProductsDetails[]>(defaultItemsData);
 
@@ -47,4 +47,4 @@ function ProductsState({ children }: Props) {
   );
 }
 
-export default ProductsState;
+export default ProductsMenuState;
