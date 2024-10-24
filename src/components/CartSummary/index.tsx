@@ -1,12 +1,15 @@
 import { IconCarbonNeutral, IconRemoveItem } from '../../utils';
 
 function CartSummary() {
+  const { productsData, updateProductsData } = useCartProviderContext();
+
   return (
     <div className="w-4/12 mt-4">
       <div className="bg-slate-50 h-auto">
         <div className="p-4">
           <h1 className="text-xl text-orange-700 font-semibold mb-8">
-            Your Cart (0)
+            Your Cart{' '}
+            {productsData.filter((product) => product.active === true).length}
           </h1>
           <div>
             {/* item description */}
@@ -45,5 +48,6 @@ function CartSummary() {
     </div>
   );
 }
+import { useCartProviderContext } from '../../context/CartProvider';
 
 export default CartSummary;

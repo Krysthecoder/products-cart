@@ -10,6 +10,8 @@ export interface IProductsDetails {
   image: IimageTypes;
   name: string;
   price: number;
+  active: boolean;
+  amount: number;
 }
 
 export interface IProdutcsContext {
@@ -17,14 +19,3 @@ export interface IProdutcsContext {
   dataFetcher: ()=>void
 }
 
-export interface IProductsCart {
-  productName: string;
-  productPrice: number;
-  productAmount: number;
-}
-export interface IProductsCartContext {
-  productInCart: IProductsCart;
-  setProductsCart: ()=>void;
-  productAdded: boolean;
-  setProductAdded: ()=>void;
-}
