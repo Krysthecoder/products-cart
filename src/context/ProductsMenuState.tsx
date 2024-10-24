@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { IProductsDetails } from '../Types';
-import { productContext } from './productContext';
+import { ProductsContext } from './ProductsContext';
 
 const defaultItemsData: IProductsDetails[] = [
   {
@@ -25,7 +25,7 @@ function ProductsMenuState({ children }: Props) {
 
   async function dataFetcher() {
     try {
-      const response = await fetch('../../../public/data.json');
+      const response = await fetch('../../../data.json');
       if (response.ok) {
         const json = await response.json();
         setProductsData(json);
@@ -40,10 +40,11 @@ function ProductsMenuState({ children }: Props) {
   useEffect(() => {
     dataFetcher();
   }, []);
+
   return (
-    <productContext.Provider value={productsData}>
+    <ProductsContext.Provider value={productsData}>
       {children}
-    </productContext.Provider>
+    </ProductsContext.Provider>
   );
 }
 

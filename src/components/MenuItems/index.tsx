@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { ItemsCard } from '../ItemsCard';
-import { productContext } from '../../context/productContext';
+import { ProductsContext } from '../../context/ProductsContext';
 import { IProductsDetails } from '../../Types';
 
 const MenuItems = () => {
-  const productsData: IProductsDetails[] | [] = useContext(productContext);
+  const productsData: IProductsDetails[] | [] = useContext(ProductsContext);
 
   return (
     <div className="w-10/12 h-auto">
