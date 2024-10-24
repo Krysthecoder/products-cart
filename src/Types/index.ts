@@ -12,9 +12,19 @@ export interface IProductsDetails {
   price: number;
 }
 
+export interface IProdutcsContext {
+  productsData: IProductsDetails[];
+  dataFetcher: ()=>void
+}
+
 export interface IProductsCart {
   productName: string;
   productPrice: number;
   productAmount: number;
-  updateProductsCart: ()=>void;
+}
+export interface IProductsCartContext {
+  productInCart: IProductsCart;
+  setProductsCart: ()=>void;
+  productAdded: boolean;
+  setProductAdded: ()=>void;
 }

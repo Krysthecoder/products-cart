@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import baklavaDesktop from '../../assets/images/baklavaDesktop.jpg';
 import { IProductsDetails } from '../../Types';
 import {
@@ -6,20 +6,25 @@ import {
   IconDecrementQuantity,
   IconIncrementQuantity
 } from '../../utils';
+import { ProductCartContext } from '../../context/ProductsContext';
 
 export const ItemsCard = ({ name, price, category }: IProductsDetails) => {
-  const [addCartBtnStatus, setAddCartBtnStatus] = useState<boolean>(true);
-
   const [productAmount, setProductAmount] = useState<number>(1);
+  const { productAdded, setProductAdded } = useContext(ProductCartContext);
+
+  function productSelected() {
+    setProductAdded(true);
+  }
+  console.log(productAdded);
 
   return (
     <div className="w-full h-auto mx-auto">
       <img src={baklavaDesktop} className="rounded-xl" alt="baklavaDesktop" />
-      {addCartBtnStatus ? (
+      {!productAdded ? (
         <button
           className="flex justify-evenly items-center w-6/12 px-3 py-2 rounded-3xl bg-slate-100 relative -mt-5 mx-auto border border-red-600"
           onClick={() => {
-            setAddCartBtnStatus(false);
+            productSelected();
           }}
         >
           <span>
