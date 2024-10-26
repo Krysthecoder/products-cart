@@ -26,7 +26,6 @@ export const ItemsCard = ({
   active
 }: ItemsCardProps) => {
   const [productAmount, setProductAmount] = useState<number>(1);
-  // const { productAdded, setProductAdded } = useContext(ProductCartContext);
   const { productsData, updateProductsData } = useCartProviderContext();
 
   function productSelected(productName: string) {
@@ -38,7 +37,6 @@ export const ItemsCard = ({
       return product;
     });
 
-    console.log(updatedProducts);
     updateProductsData(updatedProducts as IProductsDetails[]);
   }
 
