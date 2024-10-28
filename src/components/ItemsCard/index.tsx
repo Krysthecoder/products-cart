@@ -15,7 +15,6 @@ type ItemsCardProps = {
   category: string;
   active: boolean;
   amount: number;
-  updateProductsData: (products: IProductsDetails[]) => void;
   key: string;
 };
 
