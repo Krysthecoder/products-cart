@@ -29,7 +29,7 @@ function CartWithItems() {
             {/* total section */}
             <div className="flex justify-between my-4 w-11/12">
               <p className="text-slate-400">Order Total</p>
-              <p className="text-3xl"> $45.50</p>
+              <p className="text-3xl"> $Context Data</p>
             </div>
             {/* ecofriendly delivery description */}
             <div className="flex justify-center items-center gap-2 bg-amber-50 w-11/12 mx-auto py-4 m-6">
