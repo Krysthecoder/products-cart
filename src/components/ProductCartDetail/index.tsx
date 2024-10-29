@@ -1,4 +1,6 @@
 import { IconRemoveItem } from '../../utils';
+import { useCartProviderContext } from '../../context/CartProvider';
+import { IProductsDetails } from '../../Types';
 
 interface IProductCartDetail {
   productActive: boolean;
@@ -13,9 +15,24 @@ const ProductCartDetail = ({
   productPrice,
   productAmount
 }: IProductCartDetail) => {
+  const { productsData, updateProductsData } = useCartProviderContext();
+
+  function deleteItem(productName: string) {
+    const updatedProducts = productsData.map((product: IProductsDetails) => {
+      if (product.name === productName) {
+        product.active = false;
+        productAmount = 0;
+        return product;
+      }
+      return product;
+    });
+
+    updateProductsData(updatedProducts as IProductsDetails[]);
+  }
+
   if (productActive) {
     return (
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mt-4">
         <div className="flex flex-col gap-2">
           <h2>{productName}</h2>
           <div className="flex gap-3">
@@ -26,9 +43,14 @@ const ProductCartDetail = ({
             </p>
           </div>
         </div>
-        <div className="p-1 border-2 border-stone-400 rounded-full">
+        <button
+          onClick={() => {
+            deleteItem(productName);
+          }}
+          className="p-1 border-2 border-stone-400 rounded-full"
+        >
           <IconRemoveItem />
-        </div>
+        </button>
       </div>
     );
   }
