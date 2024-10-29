@@ -5,7 +5,7 @@ import {
   useEffect,
   useState
 } from 'react';
-import type { IProductsDetails } from '../Types';
+import type { IProductsDetails, ISubTotals } from '../Types';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const defaultCartProviderValue = {
@@ -17,11 +17,11 @@ export const defaultCartProviderValue = {
     );
   },
 
-  totalAmountCart: [] as number[],
+  totalAmountCart: [] as ISubTotals[],
 
-  updateTotalAmountCart: (subTotal: number): void => {
+  updateTotalAmountCart: (subTotals: ISubTotals): void => {
     console.warn(
-      `running default updateProductsData(${subTotal}), looks like you forgot a provider`
+      `running default updateProductsData(${subTotals}), looks like you forgot a provider`
     );
   }
 };
@@ -37,14 +37,17 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [productsData, setProductsData] = useState(
     defaultCartProviderValue.productsData
   );
-  const [totalAmountCart, setTotalAmountCart] = useState<number[]>([1, 2]);
+
+  const [totalAmountCart, setTotalAmountCart] = useState<ISubTotals[]>([
+    // { name: 'lavaChoclate', subTotal: 14 } console.log
+  ]);
 
   const updateProductsData = (products: IProductsDetails[]) => {
     setProductsData(products);
   };
 
-  const updateTotalAmountCart = (subTotal: number) => {
-    setTotalAmountCart([...totalAmountCart, subTotal]);
+  const updateTotalAmountCart = (subTotals: ISubTotals) => {
+    setTotalAmountCart([...totalAmountCart, subTotals]);
   };
 
   async function dataFetcher() {

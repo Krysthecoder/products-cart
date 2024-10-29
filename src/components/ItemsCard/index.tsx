@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import baklavaDesktop from '../../assets/images/baklavaDesktop.jpg';
-import { IimageTypes, IProductsDetails } from '../../Types';
+import { IimageTypes, IProductsDetails, ISubTotals } from '../../Types';
 import {
   IconAddToCart,
   IconDecrementQuantity,
@@ -26,7 +26,8 @@ export const ItemsCard = ({
   amount
 }: ItemsCardProps) => {
   const [productAmount, setProductAmount] = useState<number>(1);
-  const { productsData, updateProductsData } = useCartProviderContext();
+  const { productsData, updateProductsData, updateTotalAmountCart } =
+    useCartProviderContext();
 
   const productAmountValidator = () => {
     if (productAmount === 0) {
@@ -36,29 +37,38 @@ export const ItemsCard = ({
     return true;
   };
   function productSelected(productName: string, operation: string) {
+    const productSubTotal: ISubTotals = {
+      name: '',
+      subTotal: 0
+    };
     const updatedProducts = productsData.map((product: IProductsDetails) => {
       if (product.name === productName) {
         product.active = true;
         if (operation === 'initial') {
           product.amount = 1;
+          productSubTotal.name = productName;
+          productSubTotal.subTotal = product.price;
         } else if (operation === 'add') {
           product.amount += 1;
+          productSubTotal.subTotal += product.price;
         } else if (operation === 'minus' && productAmount > 1) {
           product.amount -= 1;
+          productSubTotal.subTotal -= product.price;
           setProductAmount(productAmount - 1);
+
           product.active = productAmountValidator();
         } else if (operation === 'minus' && productAmount === 1) {
+          productSubTotal.subTotal -= product.price;
           product.amount = 0;
           setProductAmount(1);
           product.active = false;
         }
-
         return product;
       }
       return product;
     });
-
     updateProductsData(updatedProducts as IProductsDetails[]);
+    updateTotalAmountCart(productSubTotal);
   }
 
   return (
