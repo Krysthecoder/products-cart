@@ -2,7 +2,7 @@ import { ItemsCard } from '../ItemsCard';
 import { useCartProviderContext } from '../../context/CartProvider';
 
 const MenuItems = () => {
-  const { productsData, updateProductsData } = useCartProviderContext();
+  const { productsData } = useCartProviderContext();
 
   return (
     <div className="w-10/12 h-auto">
@@ -19,7 +19,6 @@ const MenuItems = () => {
               category={product.category}
               active={product.active}
               amount={product.amount}
-              updateProductsData={updateProductsData}
               key={`${product.name}-${product.price}`}
             />
           );

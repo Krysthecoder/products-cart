@@ -20,8 +20,10 @@ const ProductCartDetail = ({
           <h2>{productName}</h2>
           <div className="flex gap-3">
             <p className="text-orange-700">{productAmount}x</p>
-            <p className="text-slate-400">@ ${productPrice}</p>
-            <p className="text-stone-500 font-semibold">$13.00</p>
+            <p className="text-slate-400">@ ${productPrice.toFixed(2)}</p>
+            <p className="text-stone-500 font-semibold">
+              ${(productAmount * productPrice).toFixed(2)}
+            </p>
           </div>
         </div>
         <div className="p-1 border-2 border-stone-400 rounded-full">
