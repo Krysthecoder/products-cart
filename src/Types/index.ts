@@ -16,6 +16,8 @@ export interface IProductsDetails {
 
 export interface IProdutcsContext {
   productsData: IProductsDetails[];
-  dataFetcher: ()=>void
+  dataFetcher: ()=>void,
+  totalAmountCart: number[],
+  updateTotalAmountCart: ()=>void,
 }
 

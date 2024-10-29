@@ -23,8 +23,6 @@ const ProductCartDetail = ({
       if (product.name === productName) {
         product.active = false;
         product.amount = 0;
-        console.log('product.active', product.active);
-        console.log('product.amount', product.amount);
 
         return product;
       }

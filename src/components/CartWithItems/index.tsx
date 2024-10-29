@@ -3,7 +3,9 @@ import ProductCartDetail from '../ProductCartDetail';
 import { IconCarbonNeutral } from '../../utils';
 
 function CartWithItems() {
-  const { productsData } = useCartProviderContext();
+  const { productsData, totalAmountCart } = useCartProviderContext();
+
+  const totalPtP = totalAmountCart.reduce((accum, amount) => amount + accum); //total Price to Pay PtP
 
   return (
     <div className="">
@@ -29,7 +31,7 @@ function CartWithItems() {
             {/* total section */}
             <div className="flex justify-between my-4 w-11/12">
               <p className="text-slate-400">Order Total</p>
-              <p className="text-3xl"> $Context Data</p>
+              <p className="text-3xl"> ${totalPtP.toFixed(2)}</p>
             </div>
             {/* ecofriendly delivery description */}
             <div className="flex justify-center items-center gap-2 bg-amber-50 w-11/12 mx-auto py-4 m-6">

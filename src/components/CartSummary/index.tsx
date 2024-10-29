@@ -4,6 +4,7 @@ import CartWithItems from '../CartWithItems';
 
 function CartSummary() {
   const { productsData } = useCartProviderContext();
+
   const cartEmpty: IProductsDetails[] = productsData.filter(
     (product) => product.active === true
   );
