@@ -10,10 +10,6 @@ import type { IProductsDetails } from '../Types';
 // eslint-disable-next-line react-refresh/only-export-components
 export const defaultCartProviderValue = {
   productsData: [] as IProductsDetails[],
-  emptyCart: true as boolean,
-  updateEmptyCart: (): void => {
-    console.warn(`que hubo `);
-  },
 
   updateProductsData: (products: IProductsDetails[]): void => {
     console.warn(
@@ -33,14 +29,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [productsData, setProductsData] = useState(
     defaultCartProviderValue.productsData
   );
-  const [emptyCart, setEmtpyCart] = useState<boolean>(true);
 
   const updateProductsData = (products: IProductsDetails[]) => {
     setProductsData(products);
-  };
-
-  const updateEmptyCart = () => {
-    setEmtpyCart(false);
   };
 
   async function dataFetcher() {
@@ -63,9 +54,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
   const value = {
     productsData,
-    updateProductsData,
-    emptyCart,
-    updateEmptyCart
+    updateProductsData
   };
 
   return (

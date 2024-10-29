@@ -32,9 +32,6 @@ const ProductCartDetail = ({
       </div>
     );
   }
-  // return (
-
-  // );
 };
 
 export default ProductCartDetail;
