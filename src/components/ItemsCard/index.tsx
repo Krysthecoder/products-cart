@@ -22,7 +22,8 @@ export const ItemsCard = ({
   name,
   price,
   category,
-  active
+  active,
+  amount
 }: ItemsCardProps) => {
   const [productAmount, setProductAmount] = useState<number>(1);
   const { productsData, updateProductsData } = useCartProviderContext();
@@ -39,7 +40,7 @@ export const ItemsCard = ({
       if (product.name === productName) {
         product.active = true;
         if (operation === 'initial') {
-          product.amount = productAmount;
+          product.amount = 1;
         } else if (operation === 'add') {
           product.amount += 1;
         } else if (operation === 'minus' && productAmount > 1) {
@@ -86,7 +87,7 @@ export const ItemsCard = ({
             <IconDecrementQuantity />
           </button>
 
-          {productAmount}
+          {amount}
 
           <button
             className="border border-white rounded-full px-1 py-1"

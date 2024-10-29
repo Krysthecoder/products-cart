@@ -21,7 +21,10 @@ const ProductCartDetail = ({
     const updatedProducts = productsData.map((product: IProductsDetails) => {
       if (product.name === productName) {
         product.active = false;
-        productAmount = 0;
+        product.amount = 0;
+        console.log('product.active', product.active);
+        console.log('product.amount', product.amount);
+
         return product;
       }
       return product;
