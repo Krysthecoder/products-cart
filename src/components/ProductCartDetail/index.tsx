@@ -16,6 +16,7 @@ const ProductCartDetail = ({
   productAmount
 }: IProductCartDetail) => {
   const { productsData, updateProductsData } = useCartProviderContext();
+  const subTotalAmount = productPrice * productAmount;
 
   function deleteItem(productName: string) {
     const updatedProducts = productsData.map((product: IProductsDetails) => {
@@ -42,7 +43,7 @@ const ProductCartDetail = ({
             <p className="text-orange-700">{productAmount}x</p>
             <p className="text-slate-400">@ ${productPrice.toFixed(2)}</p>
             <p className="text-stone-500 font-semibold">
-              ${(productAmount * productPrice).toFixed(2)}
+              ${subTotalAmount.toFixed(2)}
             </p>
           </div>
         </div>
