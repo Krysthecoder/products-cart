@@ -27,10 +27,31 @@ export const ItemsCard = ({
   const [productAmount, setProductAmount] = useState<number>(1);
   const { productsData, updateProductsData } = useCartProviderContext();
 
-  function productSelected(productName: string) {
+  const productAmountValidator = () => {
+    if (productAmount === 0) {
+      setProductAmount(1);
+      return false;
+    }
+    return true;
+  };
+  function productSelected(productName: string, operation: string) {
     const updatedProducts = productsData.map((product: IProductsDetails) => {
       if (product.name === productName) {
         product.active = true;
+        if (operation === 'initial') {
+          product.amount = productAmount;
+        } else if (operation === 'add') {
+          product.amount += 1;
+        } else if (operation === 'minus' && productAmount > 1) {
+          product.amount -= 1;
+          setProductAmount(productAmount - 1);
+          product.active = productAmountValidator();
+        } else if (operation === 'minus' && productAmount === 1) {
+          product.amount = 0;
+          setProductAmount(1);
+          product.active = false;
+        }
+
         return product;
       }
       return product;
@@ -46,7 +67,7 @@ export const ItemsCard = ({
         <button
           className="flex justify-evenly items-center w-6/12 px-3 py-2 rounded-3xl bg-slate-100 relative -mt-5 mx-auto border border-red-600"
           onClick={() => {
-            productSelected(name);
+            productSelected(name, 'initial');
           }}
         >
           <span>
@@ -59,9 +80,7 @@ export const ItemsCard = ({
           <button
             className="border border-white rounded-full px-1 py-2"
             onClick={() => {
-              if (productAmount > 1) {
-                setProductAmount(productAmount - 1);
-              }
+              productSelected(name, 'minus');
             }}
           >
             <IconDecrementQuantity />
@@ -73,6 +92,7 @@ export const ItemsCard = ({
             className="border border-white rounded-full px-1 py-1"
             onClick={() => {
               setProductAmount(productAmount + 1);
+              productSelected(name, 'add');
             }}
           >
             <IconIncrementQuantity />
