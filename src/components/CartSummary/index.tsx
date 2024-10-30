@@ -1,6 +1,7 @@
 import { useCartProviderContext } from '../../context/CartProvider';
 import { IProductsDetails } from '../../Types';
 import CartWithItems from '../CartWithItems';
+import EmptyCart from '../EmptyCart';
 
 function CartSummary() {
   const { productsData } = useCartProviderContext();
@@ -10,7 +11,7 @@ function CartSummary() {
   );
   return (
     <div className="w-4/12 mt-4">
-      {cartEmpty.length > 0 ? <CartWithItems /> : <h2>esto esta vacio</h2>}
+      {cartEmpty.length > 0 ? <CartWithItems /> : <EmptyCart />}
     </div>
   );
 }
