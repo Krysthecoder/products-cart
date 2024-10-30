@@ -13,14 +13,9 @@ export interface IProductsDetails {
   active: boolean;
   amount: number;
 }
-export interface ISubTotals {
-  name: string;
-  subTotal: number;
-}
+
 export interface IProdutcsContext {
   productsData: IProductsDetails[];
-  dataFetcher: ()=>void,
-  totalAmountCart: ISubTotals[],
-  updateTotalAmountCart: ()=>void,
+  dataFetcher: ()=>void
 }
 
