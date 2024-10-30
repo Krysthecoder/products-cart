@@ -14,6 +14,13 @@ export const defaultCartProviderValue = {
     console.warn(
       `running default updateProductsData(${products}), looks like you forgot a provider`
     );
+  },
+
+  orderProducts: false as boolean,
+  updateOrderProducts: (purchased: boolean): void => {
+    console.warn(
+      `running default updateProductsData(${purchased}), looks like you forgot a provider`
+    );
   }
 };
 
@@ -28,9 +35,14 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [productsData, setProductsData] = useState(
     defaultCartProviderValue.productsData
   );
+  const [orderProducts, setOrderProducts] = useState<boolean>(false);
 
   const updateProductsData = (products: IProductsDetails[]) => {
     setProductsData(products);
+  };
+
+  const updateOrderProducts = (purchased: boolean) => {
+    setOrderProducts(purchased);
   };
 
   async function dataFetcher() {
@@ -53,7 +65,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
   const value = {
     productsData,
-    updateProductsData
+    updateProductsData,
+    orderProducts,
+    updateOrderProducts
   };
 
   return (
