@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import baklavaDesktop from '../../assets/images/baklavaDesktop.jpg';
-import { IimageTypes, IProductsDetails, ISubTotals } from '../../Types';
+import { IimageTypes, IProductsDetails } from '../../Types';
 import {
   IconAddToCart,
   IconDecrementQuantity,
