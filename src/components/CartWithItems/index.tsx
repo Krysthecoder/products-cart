@@ -3,11 +3,17 @@ import ProductCartDetail from '../ProductCartDetail';
 import { IconCarbonNeutral } from '../../utils';
 
 function CartWithItems() {
-  const { productsData, totalAmountCart } = useCartProviderContext();
+  const { productsData } = useCartProviderContext();
+  const activeProducts = productsData.filter((product) => {
+    if (product.active) {
+      return product;
+    }
+  });
+  const subTotals = activeProducts.map((product) => {
+    return product.amount * product.price;
+  });
+  const totalNet = subTotals.reduce((accum, current) => accum + current);
 
-  const totalPtP = totalAmountCart.map((product) => product.subTotal); //total Price to Pay PtP
-
-  console.log(totalPtP);
   return (
     <div className="">
       <div className="bg-slate-50 h-auto">
@@ -32,13 +38,7 @@ function CartWithItems() {
             {/* total section */}
             <div className="flex justify-between my-4 w-11/12">
               <p className="text-slate-400">Order Total</p>
-              <p className="text-3xl">
-                {' '}
-                $
-                {totalPtP.length > 0
-                  ? totalPtP.reduce((accum, current) => current + accum)
-                  : 'empty'}
-              </p>
+              <p className="text-3xl"> ${totalNet.toFixed(2)}</p>
             </div>
             {/* ecofriendly delivery description */}
             <div className="flex justify-center items-center gap-2 bg-amber-50 w-11/12 mx-auto py-4 m-6">

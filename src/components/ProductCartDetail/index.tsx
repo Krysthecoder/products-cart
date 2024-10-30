@@ -1,14 +1,12 @@
 import { IconRemoveItem } from '../../utils';
 import { useCartProviderContext } from '../../context/CartProvider';
 import { IProductsDetails } from '../../Types';
-
 interface IProductCartDetail {
   productActive: boolean;
   productName: string;
   productPrice: number;
   productAmount: number;
 }
-
 const ProductCartDetail = ({
   productActive,
   productName,

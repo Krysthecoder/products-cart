@@ -26,9 +26,7 @@ export const ItemsCard = ({
   amount
 }: ItemsCardProps) => {
   const [productAmount, setProductAmount] = useState<number>(1);
-  const { productsData, updateProductsData, updateTotalAmountCart } =
-    useCartProviderContext();
-
+  const { productsData, updateProductsData } = useCartProviderContext();
   const productAmountValidator = () => {
     if (productAmount === 0) {
       setProductAmount(1);
@@ -68,7 +66,6 @@ export const ItemsCard = ({
       return product;
     });
     updateProductsData(updatedProducts as IProductsDetails[]);
-    updateTotalAmountCart(productSubTotal);
   }
 
   return (
