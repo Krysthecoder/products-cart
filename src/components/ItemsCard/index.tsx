@@ -44,6 +44,7 @@ export const ItemsCard = ({
         product.active = true;
         if (operation === 'initial') {
           product.amount = 1;
+          setProductAmount(1);
           productSubTotal.name = productName;
           productSubTotal.subTotal = product.price;
         } else if (operation === 'add') {

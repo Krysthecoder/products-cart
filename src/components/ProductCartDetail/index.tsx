@@ -21,7 +21,6 @@ const ProductCartDetail = ({
       if (product.name === productName) {
         product.active = false;
         product.amount = 0;
-
         return product;
       }
       return product;
