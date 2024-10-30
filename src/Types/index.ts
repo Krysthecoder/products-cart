@@ -1,13 +1,7 @@
-export type IimageTypes = {
-  desktop: string;
-  mobile: string;
-  tablet: string;
-  thumbnail: string;
-};
 
 export interface IProductsDetails {
   category: string;
-  image: IimageTypes;
+  image: string;
   name: string;
   price: number;
   active: boolean;
