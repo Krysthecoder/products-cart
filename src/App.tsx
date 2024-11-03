@@ -6,7 +6,7 @@ import { CartProvider } from './context/CartProvider';
 
 function App() {
   return (
-    <div className="flex flex-col md:flex-row md:gap-10 md:p-28 pt-8 justify-center items-center md:justify-start md:items-start bg-orange-50">
+    <div className="flex flex-col lg:flex-row lg:gap-10 lg:p-28 pt-8 justify-center items-center lg:justify-start lg:items-start bg-orange-50">
       <CartProvider>
         <MenuItems />
         <CartSummary />
