@@ -27,7 +27,7 @@ export const ItemsCard = ({
 }: ItemsCardProps) => {
   const [productAmount, setProductAmount] = useState<number>(1);
   const { productsData, updateProductsData } = useCartProviderContext();
-  
+
   const productAmountValidator = () => {
     if (productAmount === 0) {
       setProductAmount(1);
@@ -62,8 +62,12 @@ export const ItemsCard = ({
   }
 
   return (
-    <div className="w-full h-auto mx-auto">
-      <img src={image} className="rounded-xl" alt="baklavaDesktop" />
+    <div className="md:w-full md:h-auto md:mx-auto">
+      <img
+        src={image}
+        className="h-72 md:h-auto w-full object-cover rounded-xl"
+        alt="baklavaDesktop"
+      />
       {!active ? (
         <button
           className="flex justify-evenly items-center w-6/12 px-3 py-2 rounded-3xl bg-slate-100 relative -mt-5 mx-auto border border-red-600"

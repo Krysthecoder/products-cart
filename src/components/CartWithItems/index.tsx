@@ -17,7 +17,7 @@ function CartWithItems() {
   return (
     <div className="bg-slate-50 h-auto">
       <div className="p-4">
-        <h1 className="text-xl text-orange-700 font-semibold mb-8">
+        <h1 className="text-2xl md:text-xl text-orange-700 font-semibold mb-8">
           Your Cart (
           {productsData.filter((product) => product.active === true).length})
         </h1>
@@ -35,15 +35,19 @@ function CartWithItems() {
           })}
 
           {/* total section */}
-          <div className="flex justify-between my-4 w-11/12">
-            <p className="text-slate-400">Order Total</p>
-            <p className="text-3xl"> ${totalNet.toFixed(2)}</p>
+          <div className="flex justify-between my-8 w-11/12">
+            <p className="text-base text-slate-400">Order Total</p>
+            <p className="text-2xl font-semibold md:text-3xl">
+              {' '}
+              ${totalNet.toFixed(2)}
+            </p>
           </div>
           {/* ecofriendly delivery description */}
           <div className="flex justify-center items-center gap-2 bg-amber-50 w-11/12 mx-auto py-4 m-6">
             <IconCarbonNeutral />
-            <h2 className="">
-              This is a <span>carbon-neutral</span> delivery
+            <h2 className="text-stone-500">
+              This is a <span className="text-stone-700">carbon-neutral</span>{' '}
+              delivery
             </h2>
           </div>
           {/* Order Confirmation */}
