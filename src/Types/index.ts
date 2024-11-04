@@ -13,3 +13,13 @@ export interface IProdutcsContext {
   dataFetcher: ()=>void
 }
 
+export type ItemsCardProps = {
+  image: string;
+  name: string;
+  price: number;
+  category: string;
+  active: boolean;
+  amount: number;
+  key: string;
+};
+

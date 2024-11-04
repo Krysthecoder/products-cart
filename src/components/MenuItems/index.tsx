@@ -1,5 +1,5 @@
-import { ItemsCard } from '../ItemsCard';
 import { useCartProviderContext } from '../../context/CartProvider';
+import { ItemsCard } from '../ItemsCard';
 
 const MenuItems = () => {
   const { productsData } = useCartProviderContext();

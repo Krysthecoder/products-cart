@@ -1,21 +1,11 @@
 import { useState } from 'react';
-import { IProductsDetails } from '../../Types';
+import { IProductsDetails, ItemsCardProps } from '../../Types';
 import {
   IconAddToCart,
   IconDecrementQuantity,
   IconIncrementQuantity
 } from '../../utils';
 import { useCartProviderContext } from '../../context/CartProvider';
-
-type ItemsCardProps = {
-  image: string;
-  name: string;
-  price: number;
-  category: string;
-  active: boolean;
-  amount: number;
-  key: string;
-};
 
 export const ItemsCard = ({
   image,
@@ -35,7 +25,7 @@ export const ItemsCard = ({
     }
     return true;
   };
-  function productSelected(productName: string, operation: string) {
+  const productSelected = (productName: string, operation: string) => {
     const updatedProducts = productsData.map((product: IProductsDetails) => {
       if (product.name === productName) {
         product.active = true;
@@ -59,7 +49,7 @@ export const ItemsCard = ({
       return product;
     });
     updateProductsData(updatedProducts as IProductsDetails[]);
-  }
+  };
 
   return (
     <div className="md:w-full md:h-auto md:mx-auto">

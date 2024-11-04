@@ -16,7 +16,7 @@ const ProductCartDetail = ({
   const { productsData, updateProductsData } = useCartProviderContext();
   const subTotalAmount = productPrice * productAmount;
 
-  function deleteItem(productName: string) {
+  const deleteItem = (productName: string) => {
     const updatedProducts = productsData.map((product: IProductsDetails) => {
       if (product.name === productName) {
         product.active = false;
@@ -27,7 +27,7 @@ const ProductCartDetail = ({
     });
 
     updateProductsData(updatedProducts as IProductsDetails[]);
-  }
+  };
 
   if (productActive) {
     return (
